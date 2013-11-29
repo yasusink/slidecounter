@@ -1,0 +1,63 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title></title>
+<style type="text/css">
+.testBox {
+	width:100%;
+	height:1000px;
+}
+</style> 
+</head>
+<body>
+<div class="testBox">
+</div>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.slidecounter.js"></script>
+<script type="text/javascript">
+//
+//max_value:パラメーター最大値(初期値1000)
+//min_value:パラメーター最小値(初期値0)
+//
+//end_slide_point:スクロールバー最終座標（パラメーターの値が最大値になる座標　初期値500)
+//start_slide_point:スクロールバー開始座標(パラメーターの値が最小になる座標　初期値0)
+//
+//$.fn.slidecounter.setCallBackFunction()の引数にコールバック関数を登録
+//コールバックの引数は配列に格納されたオブジェクトで返ってくる
+//pram:現在のパラメーター値
+//slide_point:現在のスクロールバー座標
+
+
+$(function(){
+
+	var arrayObj=new Array(
+		{
+			max_value:400,
+			start_slide_point:200,
+			end_slide_point:365
+		},
+		{
+			max_value:200,
+			start_slide_point:0,
+			end_slide_point:365
+		}
+	);
+
+	$(this).slidecounter(arrayObj);
+
+	$.fn.slidecounter.setCallBackFunction(callbackFnc);
+
+	function callbackFnc(tValue){
+		for(var i=0;i<tValue.length;i++){
+			console.log("pram__"+i+"__"+tValue[i].pram);
+			console.log("slide_point__"+i+"__"+tValue[i].slide_point);
+		}
+	}
+
+});
+
+</script>
+</body>
+</html>
